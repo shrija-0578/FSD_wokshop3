@@ -48,11 +48,13 @@ console.table(ar1); //table format of array of objects
 // });
 // console.log(arr2);
 
-let arr2;
+let arr2 = [];
+let j=0;
 for(let i=0;i<ar1.length;i++){
     if(ar1[i].cgpa>9 && ar1[i].city=="mumbai"){
-        arr2.push(ar1[i]);
+        arr2[j]=ar1[i];
+        j++;
     }
 }
 
-console.log(arr2);
+console.table(arr2);
