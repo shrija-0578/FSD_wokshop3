@@ -55,6 +55,7 @@ for(let i=0;i<ar1.length;i++){
         arr2[j]=ar1[i];
         j++;
     }
+    
 }
 
 console.table(arr2);
