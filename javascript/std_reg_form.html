@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            
+
+        }
+        #MainContainer{
+            padding: 20px;
+            display: inline-block;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #edfdee;
+        }
+        form{
+            display: inline-block;
+            padding: 20px;
+        }
+        
+        label{
+            font-size: 2rem;
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            font-size: 2rem;
+        }
+        button{
+            padding: 10px;
+            font-size: 2rem;
+            background-color: #198e01;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px;
+            border-radius: 5px;  
+        }
+        button:hover{
+            background-color: #037214;
+        }
+        #container div p{
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="MainContainer">
+        <h1>Student Registration Form</h1>
+        <form>
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="text" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="number" id="age" name="age" required></td>
+                </tr>
+                <tr>
+                    <td><label for="section">Section:</label></td>
+                    <td><input type="radio" id="section" name="section" value="A" required>
+                        <label for="section">A</label>
+                        <input type="radio" id="section2" name="section" value="B" required>
+                        <label for="section2">B</label>
+                        <input type="radio" id="section3" name="section" value="C" required>
+                        <label for="section3">C</label>
+                        <input type="radio" id="section4" name="section" value="D" required>
+                        <label for="section4">D</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td><input type="radio" id="gender1" name="gender" value="Male" required>
+                        <label for="gender1">Male</label>
+                        <input type="radio" id="gender2" name="gender" value="Female" required>
+                        <label for="gender2">Female</label>
+                        <input type="radio" id="gender3" name="gender" value="Other" required>
+                        <label for="gender3">Other</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="dob">Date of Birth:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label for="rollNo">Roll Number:</label></td>
+                    <td><input type="number" id="rollNo" name="rollNo"></td>
+                    
+                </tr>
+                    <td><label for="number">Phone Number:</label></td>
+                    <td><input type="number" id="number" name="number" required></td> 
+                </tr>
+
+                <tr>
+                    <td><label for="password">Password </label></td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td><label for="cpassword">Confirm Password </label></td>
+                    <td><input type="cpassword" id="cpassword" name="cpassword"></td>
+                </tr>
+
+                
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="button" onclick="getFormValues();">Register</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="button" onclick="showData();">Show Data</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+    </div>
+
+    <script>
+        let data = [];
+        function getFormValues() {
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const age = document.getElementById("age").value; 
+            const section=document.getElementById("section").value;
+            const gender=document.getElementById("section").value;
+            
+            data.push({ name, email, age });
+            console.log(data[data.length - 1]);
+            document.getElementById("name").value="";
+            document.getElementById("email").value="";
+            document.getElementById("age").value="";
+        };
+        function showData() {
+            container = document.getElementById("MainContainer");
+            const newParagraph = document.createElement("div");
+            newParagraph.textContent = "Registered Students:";
+            if(data.length > 0){
+                data.forEach((student, index) => {
+                    const studentInfo = document.createElement("p");
+                    studentInfo.textContent = `${index + 1}. Name: ${student.name}, Email: ${student.email}, Age: ${student.age}`;
+                    newParagraph.appendChild(studentInfo);
+                });
+            } else {
+                const noData = document.createElement("p");
+                noData.textContent = "No students registered yet.";
+                newParagraph.appendChild(noData);
+            }
+            container.appendChild(newParagraph);
+        }
+    </script>
+</body>
+</html>
+            

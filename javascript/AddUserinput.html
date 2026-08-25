@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add two numbers</title>
+    <style>
+        #container{
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        form{
+            display: inline-block;
+            border: 1px solid #fe9999;
+            padding: 20px;
+
+        }
+        td{
+            border: 1px solid #fe9999;
+        }
+        label{
+            font-size: 2rem;
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            font-size: 2rem;
+        }
+        button{
+            padding: 10px;
+            font-size: 2rem;
+            background-color: #fe9999;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px;
+            border-radius: 5px;
+            
+        }
+        button:hover{
+            background-color: #fe6666;
+        }
+        #result{
+            font-size: 2rem;
+            color: #fe6666;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h1>Add Two Numbers</h1>
+    <form>
+        <table>
+            <tr>
+                <td><label for="num1">Number 1:</label></td>
+                <td><input type="number" id="num1" placeholder="Enter first number"></td>
+                <!-- still takin str -->
+            </tr>
+            <tr>
+                <td><label for="num2">Number 2:</label></td>
+                <td><input type="number" id="num2" placeholder="Enter second number"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="button" onclick="addNumbers()">Add</button>
+                </td>
+            </tr>
+            <tr > <td id="result" colspan="2"  style="text-align: center;"></td></tr>
+        </table>
+    </form>
+     <div ></div>
+
+    </div>
+   
+   <script>
+        function addNumbers(){
+            let n1 = parseInt(document.getElementById("num1").value) || 0;
+            let n2 = parseInt(document.getElementById("num2").value) || 0;
+            let sum =n1+n2;
+            console.log(sum);
+            document.getElementById("result").innerHTML = "The sum is: " + sum;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>voting eligibility </title>
+    <style>
+        #container{
+            text-align: center;
+            margin-top: 100px;
+        }
+        #container h1{
+            font-size: 3rem;
+            color:#fe6666;
+        }
+
+        form{
+            display: inline-block;
+            border: 1px solid #fe9999;
+            padding: 20px;
+
+        }
+        td{
+            border: 1px solid #fe9999;
+        }
+        label{
+            font-size: 2rem;
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            font-size: 2rem;
+        }
+        button{
+            padding: 10px;
+            font-size: 2rem;
+            background-color: #fe9999;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            margin: 10px;
+            border-radius: 5px;
+            
+        }
+        button:hover{
+            background-color: #fe6666;
+        }
+        #result{
+            font-size: 2rem;
+            color: #fe6666;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <h1>Can You vote ?</h1>
+    <form>
+        <table>
+            <tr>
+                <td><label for="Name">Enter your Name:</label></td>
+                <td><input type="text" id="Name" placeholder="Enter name"></td>
+                
+            </tr>
+            <tr>
+                <td><label for="Num">Enter your Age:</label></td>
+                <td><input type="number" id="Num" placeholder="Enter age"></td>
+                
+            </tr>
+            
+            
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="button" onclick="check()">Add</button>
+                </td>
+            </tr>
+            <tr > <td id="result" colspan="2"  style="text-align: center;"></td></tr>
+        </table>
+    </form>
+     <div ></div>
+
+    </div>
+   
+   <script>
+        function check(){
+            let n = parseInt(document.getElementById("Num").value) || 0;
+            let name=document.getElementById("Name").value;
+            if(n>=18){
+                document.getElementById("result").innerHTML = name+" you can vote";
+            }
+            else{
+                document.getElementById("result").innerHTML = name+" you can not vote";
+            }
+            console.log(sum);
+            
+        }
+    </script>
+</body>
+</html>
