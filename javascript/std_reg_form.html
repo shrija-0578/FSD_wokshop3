@@ -5,54 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration Form</title>
     <style>
-        body{
+        body {
             display: flex;
             justify-content: center;
-            
-
         }
-        #MainContainer{
+        #MainContainer {
             padding: 20px;
             display: inline-block;
             text-align: center;
-            margin-top: 100px;
+            margin-top: 50px;
             background-color: #edfdee;
         }
-        form{
+        form {
             display: inline-block;
             padding: 20px;
         }
-        
-        label{
-            font-size: 2rem;
+        label {
+            font-size: 1.2rem;
         }
-        input{
-            padding: 10px;
-            margin: 10px;
-            font-size: 2rem;
+        input {
+            padding: 8px;
+            margin: 5px;
+            font-size: 1rem;
         }
-        button{
+        button {
             padding: 10px;
-            font-size: 2rem;
+            font-size: 1.2rem;
             background-color: #198e01;
+            color: white;
             border: none;
             cursor: pointer;
             width: 80%;
             margin: 10px;
             border-radius: 5px;  
         }
-        button:hover{
+        button:hover {
             background-color: #037214;
         }
-        #container div p{
-            font-size: 2rem;
+        #outputDisplay p {
+            font-size: 1rem;
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
     <div id="MainContainer">
         <h1>Student Registration Form</h1>
-        <form>
+        <form id="registrationForm">
             <table>
                 <tr>
                     <td><label for="name">Name:</label></td>
@@ -60,31 +59,33 @@
                 </tr>
                 <tr>
                     <td><label for="email">Email:</label></td>
-                    <td><input type="text" id="email" name="email" required></td>
+                    <td><input type="email" id="email" name="email" required></td>
                 </tr>
                 <tr>
                     <td><label for="age">Age:</label></td>
                     <td><input type="number" id="age" name="age" required></td>
                 </tr>
                 <tr>
-                    <td><label for="section">Section:</label></td>
-                    <td><input type="radio" id="section" name="section" value="A" required>
-                        <label for="section">A</label>
-                        <input type="radio" id="section2" name="section" value="B" required>
-                        <label for="section2">B</label>
-                        <input type="radio" id="section3" name="section" value="C" required>
-                        <label for="section3">C</label>
-                        <input type="radio" id="section4" name="section" value="D" required>
-                        <label for="section4">D</label>
+                    <td><label>Section:</label></td>
+                    <td>
+                        <input type="radio" id="sectionA" name="section" value="A" required>
+                        <label for="sectionA">A</label>
+                        <input type="radio" id="sectionB" name="section" value="B">
+                        <label for="sectionB">B</label>
+                        <input type="radio" id="sectionC" name="section" value="C">
+                        <label for="sectionC">C</label>
+                        <input type="radio" id="sectionD" name="section" value="D">
+                        <label for="sectionD">D</label>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="gender">Gender:</label></td>
-                    <td><input type="radio" id="gender1" name="gender" value="Male" required>
+                    <td><label>Gender:</label></td>
+                    <td>
+                        <input type="radio" id="gender1" name="gender" value="Male" required>
                         <label for="gender1">Male</label>
-                        <input type="radio" id="gender2" name="gender" value="Female" required>
+                        <input type="radio" id="gender2" name="gender" value="Female">
                         <label for="gender2">Female</label>
-                        <input type="radio" id="gender3" name="gender" value="Other" required>
+                        <input type="radio" id="gender3" name="gender" value="Other">
                         <label for="gender3">Other</label>
                     </td>
                 </tr>
@@ -95,22 +96,19 @@
                 <tr>
                     <td><label for="rollNo">Roll Number:</label></td>
                     <td><input type="number" id="rollNo" name="rollNo"></td>
-                    
                 </tr>
-                    <td><label for="number">Phone Number:</label></td>
-                    <td><input type="number" id="number" name="number" required></td> 
-                </tr>
-
                 <tr>
-                    <td><label for="password">Password </label></td>
+                    <td><label for="number">Phone Number:</label></td>
+                    <td><input type="tel" id="number" name="number" required></td> 
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
                     <td><input type="password" id="password" name="password"></td>
                 </tr>
                 <tr>
-                    <td><label for="cpassword">Confirm Password </label></td>
-                    <td><input type="cpassword" id="cpassword" name="cpassword"></td>
+                    <td><label for="cpassword">Confirm Password:</label></td>
+                    <td><input type="password" id="cpassword" name="cpassword"></td>
                 </tr>
-
-                
                 <tr>
                     <td colspan="2" style="text-align: center;">
                         <button type="button" onclick="getFormValues();">Register</button>
@@ -124,43 +122,52 @@
             </table>
         </form>
 
-
+        <div id="outputDisplay"></div>
     </div>
 
     <script>
         let data = [];
+
         function getFormValues() {
-            
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
-            const age = document.getElementById("age").value; 
-            const section=document.getElementById("section").value;
-            const gender=document.getElementById("section").value;
+            const age = document.getElementById("age").value;
             
-            data.push({ name, email, age });
-            console.log(data[data.length - 1]);
-            document.getElementById("name").value="";
-            document.getElementById("email").value="";
-            document.getElementById("age").value="";
-        };
+            // Get selected radio button values safely
+            const selectedSection = document.querySelector('input[name="section"]:checked');
+            const selectedGender = document.querySelector('input[name="gender"]:checked');
+            
+            const section = selectedSection ? selectedSection.value : "N/A";
+            const gender = selectedGender ? selectedGender.value : "N/A";
+
+            if (!name || !email || !age) {
+                alert("Please fill in the basic details (Name, Email, Age).");
+                return;
+            }
+
+            data.push({ name, email, age, section, gender });
+            console.log("Added student:", data[data.length - 1]);
+
+            // Reset the form
+            document.getElementById("registrationForm").reset();
+        }
+
         function showData() {
-            container = document.getElementById("MainContainer");
-            const newParagraph = document.createElement("div");
-            newParagraph.textContent = "Registered Students:";
-            if(data.length > 0){
+            const displayDiv = document.getElementById("outputDisplay");
+            displayDiv.innerHTML = "<h3>Registered Students:</h3>";
+
+            if (data.length > 0) {
                 data.forEach((student, index) => {
                     const studentInfo = document.createElement("p");
-                    studentInfo.textContent = `${index + 1}. Name: ${student.name}, Email: ${student.email}, Age: ${student.age}`;
-                    newParagraph.appendChild(studentInfo);
+                    studentInfo.textContent = `${index + 1}. Name: ${student.name}, Email: ${student.email}, Age: ${student.age}, Section: ${student.section}, Gender: ${student.gender}`;
+                    displayDiv.appendChild(studentInfo);
                 });
             } else {
                 const noData = document.createElement("p");
                 noData.textContent = "No students registered yet.";
-                newParagraph.appendChild(noData);
+                displayDiv.appendChild(noData);
             }
-            container.appendChild(newParagraph);
         }
     </script>
 </body>
 </html>
-            
