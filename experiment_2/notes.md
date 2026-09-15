@@ -19,3 +19,8 @@ function call:-
  const t=>(parameterlist)=>{
     <!-- statements -->
  }
+
+
+
+Syncronus
+Asyncronus 
