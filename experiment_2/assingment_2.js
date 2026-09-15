@@ -1,5 +1,5 @@
 const fs = require("fs"); 
-fs.writeFile("student.txt","Name : john     Roll No : 123   Branch : CSE    semester : 3",(err)=>{
+fs.writeFile("student.txt","Name : john\nRoll No : 123\nBranch : CSE\nsemester : 3",(err)=>{
     if (err) throw err
     else
     {
@@ -16,7 +16,7 @@ fs.readFile("student.txt","utf-8",(err,data)=>{
     }
 });
 //update
-fs.appendFile("student.txt","   Subject : FSD   marks : 95   Attendence : 90",(err)=>{
+fs.appendFile("student.txt","\nSubject : FSD\nmarks : 95\nAttendence : 90",(err)=>{
     if (err) throw err
     else
     {
